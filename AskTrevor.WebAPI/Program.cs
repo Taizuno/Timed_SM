@@ -7,6 +7,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+.ConfigureWebHostDefaults(webBuilder =>{
+    webBuilder.UseUrls("http://localhost:5075", "https://localhost:7160");
+});
+
+builder.Services.AddHttpsRedirection(options => options.HttpsPort = 7160);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseSqlServer(connectionString));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
