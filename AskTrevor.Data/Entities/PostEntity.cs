@@ -17,6 +17,6 @@ namespace AskTrevor.Data.Entities
         [Required]
         public string Username { get; set; }
         [Required]
-        public Datetime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
