@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AskTrevor.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using AskTrevor.Data.Entities;
 
 namespace AskTrevor.Data
 {
@@ -13,7 +14,10 @@ namespace AskTrevor.Data
     : base(options)
     {
     }   
-
+    
     public DbSet<CommentEntity> Comment { get; set; }
+    
+    public DbSet<PostEntity> Posts { get; set; } 
+
     }
 }
