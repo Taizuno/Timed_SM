@@ -23,6 +23,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
+// Comment Service Dependency Injection
+services.AddScoped<ICommentService, CommentService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
