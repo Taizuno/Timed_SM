@@ -31,5 +31,21 @@ namespace AskTrevor.Service.Comment
 
             return numberOfChanges == 1;
         }
+
+        public async Task<CommentDetail> GetCommentByIdAsync(int commentId)
+        {
+            var entity = await _context.Comments.FindAsync(commentId);
+            if (entity is null)
+                return null;
+            
+            var commentDetail = new CommentDetail
+            {
+                Id = entity.Id,
+                Text = entity.Text,
+                Username = entity.Username,
+                CommentCreatedAt = entity.CommentCreatedAt
+            };
+            return commentDetail;
+        }
     }
 }

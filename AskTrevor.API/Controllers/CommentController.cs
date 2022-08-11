@@ -35,5 +35,17 @@ namespace AskTrevor.API.Controllers
             }
             return BadRequest("Something went wrong. Comment could not be created.");
         }
+
+        [HttpGet("{commentId:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int commentId)
+        {
+            var commentDetail = await _commentService.GetCommentByIdAsync(commentId);
+
+            if (commentDetail is null)
+            {
+                return NotFound();
+            }
+            return Ok(commentDetail);
+        }
     }
 }

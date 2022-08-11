@@ -10,5 +10,6 @@ namespace AskTrevor.Service.Comment
     public interface ICommentService
     {
         Task<bool> CreateCommentAsync(CommentCreate model);
+        Task<CommentDetail> GetCommentByIdAsync(int commentId);
     }
 }
