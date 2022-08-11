@@ -1,9 +1,12 @@
 using AskTrevor.Data;
 using Microsoft.EntityFrameworkCore;
+
+using AskTrevor.Service.Comment;
 using AskTrevor.Service.Post;
 using System.Text;
 using AskTrevor.Service.Post;
 using Microsoft.OpenApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +29,10 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+// Comment Service Dependency Injection
+builder.Services.AddScoped<ICommentService, CommentService>();
+
 
 var app = builder.Build();
 
