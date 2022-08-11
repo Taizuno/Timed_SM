@@ -1,5 +1,6 @@
 using AskTrevor.Data;
 using Microsoft.EntityFrameworkCore;
+using AskTrevor.Service.Comment;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 // Comment Service Dependency Injection
-services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+
 
 var app = builder.Build();
 
