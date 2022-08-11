@@ -7,6 +7,7 @@ using AskTrevor.Data.Entities;
 using AskTrevor.Models.Post;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace AskTrevor.Service.Post
 {
     public class PostService : IPostService
@@ -20,7 +21,7 @@ namespace AskTrevor.Service.Post
         {
             if (await GetPostByUsernameAsync(model.Username) != null)
                 return false;
-                
+
             var entity = new PostEntity
             {
                 Title = model.Title,
