@@ -13,9 +13,9 @@ namespace AskTrevor.API.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentService _commentService;
-        public CommentController(ICommentService service) {
+        public CommentController(ICommentService commentService) {
             {
-                _commentService = service;
+                _commentService = commentService;
             }
         }
     }
