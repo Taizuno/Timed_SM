@@ -34,6 +34,22 @@ namespace AskTrevor.Service.Post
 
             return numberOfChanges == 1;
         }
+        public async Task<PostDetail> GetPostByIdAsync(int Id)
+        {
+            var entity = await _context.Posts.FindAsync(Id);
+            if (entity is null)
+            return null;
+
+            var postDetail = new PostDetail
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                Text = entity.Text,
+                Username = entity.Username,
+                PostCreatedAt = entity.PostCreatedAt
+            };
+            return postDetail;
+        }
         private async Task<PostEntity> GetPostByUsernameAsync(string username)
         {
             return await _context.Posts.FirstOrDefaultAsync(post => post.Username.ToLower() == username.ToLower());
