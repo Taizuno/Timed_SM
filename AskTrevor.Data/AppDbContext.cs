@@ -15,9 +15,11 @@ namespace AskTrevor.Data
     {
     }   
     
-    public DbSet<CommentEntity> Comment { get; set; }
+    public DbSet<CommentEntity> Comments { get; set; }
     
     public DbSet<PostEntity> Posts { get; set; } 
+
+    public DbSet<ReplyEntity> Replies { get; set; }
 
     }
 }

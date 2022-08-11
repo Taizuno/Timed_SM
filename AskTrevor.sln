@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskTrevor.WebAPI", "AskTrevor.WebAPI\AskTrevor.WebAPI.csproj", "{29FA6609-4A76-4E87-9349-45C4211B3ACD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskTrevor.API", "AskTrevor.API\AskTrevor.API.csproj", "{29FA6609-4A76-4E87-9349-45C4211B3ACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskTrevor.Data", "AskTrevor.Data\AskTrevor.Data.csproj", "{BCCFE105-0543-4DCF-B2A4-425B62712510}"
 EndProject
