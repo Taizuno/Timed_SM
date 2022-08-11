@@ -1,10 +1,14 @@
 using AskTrevor.Data;
 using Microsoft.EntityFrameworkCore;
-
+using AskTrevor.Service.Post;
+using System.Text;
+using AskTrevor.Service.Post;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
