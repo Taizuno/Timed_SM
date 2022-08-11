@@ -16,6 +16,5 @@ namespace AskTrevor.Data
         public string UserName {get; set;}
         [Required]
         public DateTime Created {get; set;}
-        [Required]
     }
 }
