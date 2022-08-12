@@ -6,6 +6,7 @@ using AskTrevor.Service.Post;
 using System.Text;
 using AskTrevor.Service.Post;
 using Microsoft.OpenApi.Models;
+using AskTrevor.Service.Reply;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 
 // Comment Service Dependency Injection
 builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IReplyService, ReplyService>();
 
 
 var app = builder.Build();
