@@ -68,6 +68,16 @@ namespace AskTrevor.Service.Post
             };
             return usernameDetail;
         }
+        public async Task<bool> DeletePostAsync(int Id)
+        {
+            var postEntity = await _context.Posts.FindAsync(Id);
+
+            if (postEntity?.Id != Id)
+                return false;
+
+            _context.Posts.Remove(postEntity);
+            return await _context.SaveChangesAsync() == 1;
+        }
         private async Task<PostEntity> GetUsernameAsync(string username)
         {
             return await _context.Posts.FirstOrDefaultAsync(post => post.Username.ToLower() == username.ToLower());

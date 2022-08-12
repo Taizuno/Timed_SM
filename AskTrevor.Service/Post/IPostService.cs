@@ -11,6 +11,7 @@ namespace AskTrevor.Service.Post
         Task<bool> CreatePostAsync(PostCreate model);
         Task<PostDetail> GetPostByIdAsync(int Id);
         Task<PostDetail> GetPostByUsernameAsync(string Username);
+        Task<bool> DeletePostAsync(int Id);
         // Task<bool> UpdatePostAsync(PostUpdate request);
         // Task<bool> DeleteAPostAsync(int Id);
     }
