@@ -47,5 +47,16 @@ namespace AskTrevor.Service.Comment
             };
             return commentDetail;
         }
+
+        public async Task<bool> DeleteCommentAsync(int commentId)
+        {
+            var commentEntity = await _context.Comments.FindAsync(commentId);
+
+            if (commentEntity?.Id != commentId)
+                return false;
+
+            _context.Comments.Remove(commentEntity);
+            return await _context.SaveChangesAsync() == 1;
+        }
     }
 }

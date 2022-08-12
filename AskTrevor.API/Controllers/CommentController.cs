@@ -47,5 +47,13 @@ namespace AskTrevor.API.Controllers
             }
             return Ok(commentDetail);
         }
+
+        [HttpDelete("{commentId:int}")]
+        public async Task<IActionResult> DeleteComment([FromRoute] int commentId)
+        {
+            return await _commentService.DeleteCommentAsync(commentId)
+                ? Ok($"Comment {commentId} was deleted successfully.")
+                : BadRequest($"Comment {commentId} could not be deleted.");
+        }
     }
 }

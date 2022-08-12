@@ -52,22 +52,22 @@ namespace AskTrevor.Service.Post
             return postDetail;
         }
         //GETPOSTSBYUSERNAME
-        // public async Task<PostDetail> GetPostsByUsernameAsync(string Username)
-        // {
-        //     var postEntity = await _context.FindAsync(Username);
-        //     if (postEntity is null)
-        //     return null;
+        public async Task<PostDetail> GetPostByUsernameAsync(string Username)
+        {
+            var postEntity = await _context.Posts.FindAsync(Username);
+            if (postEntity is null)
+            return null;
 
-        //     var usernameDetail = new PostDetail
-        //     {
-        //         Id = postEntity.Id,
-        //         Title = postEntity.Title,
-        //         Text = postEntity.Text,
-        //         Username = postEntity.Username,
-        //         PostCreatedAt = postEntity.PostCreatedAt
-        //     };
-        //     return usernameDetail;
-        // }
+            var usernameDetail = new PostDetail
+            {
+                Id = postEntity.Id,
+                Title = postEntity.Title,
+                Text = postEntity.Text,
+                Username = postEntity.Username,
+                PostCreatedAt = postEntity.PostCreatedAt
+            };
+            return usernameDetail;
+        }
         private async Task<PostEntity> GetUsernameAsync(string username)
         {
             return await _context.Posts.FirstOrDefaultAsync(post => post.Username.ToLower() == username.ToLower());

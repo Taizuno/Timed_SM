@@ -11,5 +11,6 @@ namespace AskTrevor.Service.Comment
     {
         Task<bool> CreateCommentAsync(CommentCreate model);
         Task<CommentDetail> GetCommentByIdAsync(int commentId);
+        Task<bool> DeleteCommentAsync(int commentId);
     }
 }
