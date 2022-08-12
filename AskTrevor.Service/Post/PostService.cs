@@ -19,7 +19,7 @@ namespace AskTrevor.Service.Post
         }
         public async Task<bool> CreatePostAsync(PostCreate model)
         {
-            if (await GetPostByUsernameAsync(model.Username) != null)
+            if (await GetUsernameAsync(model.Username) != null)
                 return false;
 
             var entity = new PostEntity
@@ -34,7 +34,41 @@ namespace AskTrevor.Service.Post
 
             return numberOfChanges == 1;
         }
-        private async Task<PostEntity> GetPostByUsernameAsync(string username)
+        
+        public async Task<PostDetail> GetPostByIdAsync(int Id)
+        {
+            var entity = await _context.Posts.FindAsync(Id);
+            if (entity is null)
+            return null;
+
+            var postDetail = new PostDetail
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                Text = entity.Text,
+                Username = entity.Username,
+                PostCreatedAt = entity.PostCreatedAt
+            };
+            return postDetail;
+        }
+        //GETPOSTSBYUSERNAME
+        // public async Task<PostDetail> GetPostsByUsernameAsync(string Username)
+        // {
+        //     var postEntity = await _context.FindAsync(Username);
+        //     if (postEntity is null)
+        //     return null;
+
+        //     var usernameDetail = new PostDetail
+        //     {
+        //         Id = postEntity.Id,
+        //         Title = postEntity.Title,
+        //         Text = postEntity.Text,
+        //         Username = postEntity.Username,
+        //         PostCreatedAt = postEntity.PostCreatedAt
+        //     };
+        //     return usernameDetail;
+        // }
+        private async Task<PostEntity> GetUsernameAsync(string username)
         {
             return await _context.Posts.FirstOrDefaultAsync(post => post.Username.ToLower() == username.ToLower());
         }

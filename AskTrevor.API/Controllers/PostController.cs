@@ -32,5 +32,16 @@ namespace AskTrevor.API.Controllers
             }
             return BadRequest("Post not created");
         }
+        [HttpGet("{Id:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int Id)
+        {
+            var postDetail = await _service.GetPostByIdAsync(Id);
+
+            if (postDetail is null)
+            {
+                return NotFound();
+            }
+            return Ok(postDetail);
+        }
     }
 }
