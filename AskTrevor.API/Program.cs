@@ -1,15 +1,18 @@
 using AskTrevor.Data;
 using Microsoft.EntityFrameworkCore;
-
-using AskTrevor.Service.Comment;
-using AskTrevor.Service.Post;
 using System.Text;
+using AskTrevor.Service.Post;
+using AskTrevor.Service.Comment;
 using Microsoft.OpenApi.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,10 +30,6 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
-// Comment Service Dependency Injection
-builder.Services.AddScoped<IPostService, PostService>();
-builder.Services.AddScoped<ICommentService, CommentService>();
 
 
 var app = builder.Build();
