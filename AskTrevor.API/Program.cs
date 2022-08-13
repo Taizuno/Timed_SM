@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IReplyService, ReplyService>();
 
 
 builder.Services.AddControllers();
@@ -33,9 +34,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 
-// Comment Service Dependency Injection
-builder.Services.AddScoped<ICommentService, CommentService>();
-builder.Services.AddScoped<IReplyService, ReplyService>();
 
 
 var app = builder.Build();
