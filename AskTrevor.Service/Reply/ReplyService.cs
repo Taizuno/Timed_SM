@@ -22,7 +22,7 @@ namespace AskTrevor.Service.Reply
                 UserName = model.UserName,
                 ReplyCreatedAt = DateTime.Now
             };
-        _context.Reply.Add(Entity);
+        _context.Replies.Add(entity);
         var numberOfChanges = await _context.SaveChangesAsync();
 
         return numberOfChanges == 1; 
